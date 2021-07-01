@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  step-ca:
+    image: smallstep/step-ca
+    restart: always
+    ports:
+      - ${STEP_CA_PORT:-9000}:9000
+    volumes:
+      - step:/home/step
+
+volumes:
+  step:
