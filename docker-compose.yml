@@ -1,8 +1,8 @@
-version: '3.7'
+version: '3.8'
 
 services:
   step-ca:
-    image: smallstep/step-ca
+    image: smallstep/step-ca:0.15.15
     restart: always
     ports:
       - ${STEP_CA_PORT:-9000}:9000
