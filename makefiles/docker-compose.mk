@@ -1,3 +1,5 @@
+# https://github.com/kmmndr/makefile-collection
+
 compose_files :=
 
 .PHONY: docker-compose-pull
@@ -24,6 +26,16 @@ docker-compose-stop: environment ##- Stop containers
 docker-compose-logs: environment ##- Print containers logs
 	$(info *** Printing containers logs ***)
 	$(load_env); docker-compose ${compose_files} logs -f
+
+.PHONY: docker-compose-ps
+docker-compose-ps: environment ##- Print containers statuses
+	$(info *** Printing containers statuses ***)
+	$(load_env); docker-compose ${compose_files} ps
+
+.PHONY: docker-compose-clean
+docker-compose-clean: environment ##- Stop and remove volumes
+	$(info *** Stopping containers and remove volumes ***)
+	$(load_env); docker-compose ${compose_files} down -v
 
 .PHONY: docker-compose-check-remote-env
 docker-compose-check-remote-env: environment ##- Check environment variables
